@@ -246,7 +246,7 @@ class Algorithm():
 
     def run_train_epoch(self, data_loader, epoch):
         self.logger.info('Training: %s' % os.path.basename(self.exp_dir))
-        self.dloader       = data_loader
+        self.dloader = data_loader
         self.dataset_train = data_loader.dataset
 
         for key, network in self.networks.items():
@@ -270,7 +270,7 @@ class Algorithm():
         self.logger.info('Evaluating: %s' % os.path.basename(self.exp_dir))
         self.dloader = dloader
         self.dataset_eval = dloader.dataset
-        self.logger.info('==> Dataset: %s [%d images]' % (dloader.dataset.name, len(dloader)))
+        self.logger.info('==> Dataset: %s [%d images]' % (dloader.dataset.name, len(dloader())))
         for key, network in self.networks.items():
             network.eval()
 
